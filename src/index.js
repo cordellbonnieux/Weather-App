@@ -7,7 +7,7 @@ function createForm(){
   const wrapper = document.createElement('div')
     main.appendChild(wrapper)
   const form = document.createElement('form')
-    form.onsubmit = 'window.preventDefault()' // this does not work
+    form.setAttribute('onsubmit', 'return false')
     wrapper.appendChild(form)
   const search = document.createElement('input')
     search.type = 'text'
@@ -32,5 +32,6 @@ async function getWeather(query){
 function formSubmit(){ // this is not hooked up
   const query = document.getElementById('textField').value
   console.log('form submitted')
-  getWeather(query)
+  console.log(query)
+  //getWeather(query)
 }
