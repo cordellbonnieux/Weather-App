@@ -1,20 +1,22 @@
-import _ from "lodash";
-import "./style.css";
+import _ from "lodash" // do i really need it?
+import "./style.css"
 
 const main = document.querySelector("main")
+const form = document.createElement('form')
 
 function createForm(){
   const wrapper = document.createElement('div')
     main.appendChild(wrapper)
-  const form = document.createElement('form')
+    form.setAttribute('name', 'form')
     form.setAttribute('onsubmit', 'return false')
     wrapper.appendChild(form)
   const search = document.createElement('input')
-    search.type = 'text'
+    search.setAttribute('type', 'text')
+    search.setAttribute('name', 'textField')
     search.setAttribute('id', 'textField')
     form.appendChild(search)
   const button = document.createElement('button')
-    button.type = 'submit'
+    button.setAttribute('type', 'submit')
     button.textContent = 'search'
     form.appendChild(button)
 }
@@ -29,9 +31,13 @@ async function getWeather(query){
     console.error(error)
   }
 }
-function formSubmit(){ // this is not hooked up
-  const query = document.getElementById('textField').value
-  console.log('form submitted')
-  console.log(query)
-  //getWeather(query)
-}
+form.addEventListener('submit', function(){
+  if (document.form.textField.value == ''){
+    return false
+  } else {
+    const query = document.getElementById('textField').value
+    console.log('form submitted')
+    console.log(query)
+    //getWeather(query)
+  }
+})
