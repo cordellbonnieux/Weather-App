@@ -2,14 +2,16 @@ import _ from "lodash";
 import "./style.css";
 
 const main = document.querySelector("main")
-const form = document.createElement('form')
 
 function createForm(){
   const wrapper = document.createElement('div')
     main.appendChild(wrapper)
+  const form = document.createElement('form')
+    form.onsubmit = 'window.preventDefault()' // this does not work
     wrapper.appendChild(form)
   const search = document.createElement('input')
     search.type = 'text'
+    search.setAttribute('id', 'textField')
     form.appendChild(search)
   const button = document.createElement('button')
     button.type = 'submit'
@@ -26,4 +28,9 @@ async function getWeather(query){
   } catch (error){
     console.error(error)
   }
+}
+function formSubmit(){ // this is not hooked up
+  const query = document.getElementById('textField').value
+  console.log('form submitted')
+  getWeather(query)
 }
