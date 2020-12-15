@@ -4,6 +4,19 @@ import "./style.css"
 // global variables
 const main = document.querySelector("main")
 const form = document.createElement('form')
+const results = document.getElementById('results')
+
+// info text
+function defaultText(){
+  const p = document.createElement('p')
+  p.textContent = 'enter a city in the search above to get the weather.'
+  return p
+}
+function errorText(){
+  const p = document.createElement('p')
+  p.textContent = 'Hmm... Looks like there was an error with your search. Try again!'
+  return p
+}
 
 // building blocks 
 function createHeader(){
@@ -31,10 +44,32 @@ function createForm(){
     button.textContent = 'search'
     form.appendChild(button)
 }
+function resultsArea(info){
+  results.innerHTML = ''
+  const wrapper = document.createElement('div')
+  results.appendChild(wrapper)
+  wrapper.appendChild(info)
+}
+function createFooter(){
+  const footer = document.querySelector('footer')
+  const text = document.createElement('p')
+  const link = document.createElement('a')
+    link.textContent = 'Cordell Bonnieux'
+    link.setAttribute('href', 'https://cordellbonnieux.com')
+    link.setAttribute('target', '_blank')
+    link.style.display = 'inline'
+    text.style.display = 'inline'
+    text.innerHTML = `This app was created by `
+    footer.appendChild(text)
+    footer.appendChild(link)
+
+}
 
 // build the page
 createHeader()
 createForm()
+resultsArea(defaultText())
+createFooter()
 
 // weather retrieval
 async function getWeather(query){
@@ -43,8 +78,10 @@ async function getWeather(query){
     const response = await fetch(url, {mode: 'cors'}) 
     const data = await response.json()
     console.log(data)
-  } catch (error){
+    //displayWeather(data)
+  } catch (error) {
     console.error(error)
+    resultsArea(errorText()) // this will not display
   }
 }
 form.addEventListener('submit', function(){
@@ -55,3 +92,8 @@ form.addEventListener('submit', function(){
     getWeather(query)
   }
 })
+function displayWeather(data){
+  //const 
+  const city = document.createElement('h2')
+  // resultsArea(plug in a complete grid here)
+}
