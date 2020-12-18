@@ -78,10 +78,11 @@ async function getWeather(query){
     const response = await fetch(url, {mode: 'cors'}) 
     const data = await response.json()
     console.log(data)
-    //displayWeather(data)
+    gatherWeather(data)
   } catch (error) {
     console.error(error)
-    resultsArea(errorText()) // this will not display
+    const err = errorText()
+    resultsArea(err) // try
   }
 }
 form.addEventListener('submit', function(){
@@ -92,8 +93,39 @@ form.addEventListener('submit', function(){
     getWeather(query)
   }
 })
-function displayWeather(data){
-  //const 
-  const city = document.createElement('h2')
-  // resultsArea(plug in a complete grid here)
+function gatherWeather(data){
+  // it fucks up around here...
+  const name = {info: data.name, title: 'name'}
+  const temp = {info: data.main.temp, title: 'temp'}
+  const feelsLike = {info: data.main['feels_like'], title: 'feels like'}
+  const humidity = {info: data.main.humidity, title: 'humidity'}
+  const pressure = {info: data.main.pressure, title: 'pressure'}
+  const maxTemp = {info: data.main['temp_max'], title: 'max temp'}
+  const minTemp = {info: data.main['temp_min'], title: 'min temp'}
+  const weather = [name, temp, feelsLike, humidity, pressure, maxTemp, minTemp]
+  let theWeather = displayWeather(weather)
+  console.log('right before resultsArea()')
+  resultsArea(theWeather)
+  console.log('gatherWeather() complete')
+}
+function displayWeather(weather){
+  const wrapper = document.createElement('div')
+    wrapper.setAttribute('id', 'weather')
+  for (let i = 0; i < weather.length; i++){
+    let title = weather[i].title
+    let data = weather[i].info
+    let wrap = document.createElement('div')
+      wrap.setAttribute('id', title)
+    let heading = document.createElement('span')
+      heading.textContent = title
+      heading.setAttribute('class', 'title')
+    let info = document.createElement('span')
+      info.textContent = data
+      info.setAttribute('class', 'info')
+    wrap.appendChild(title)
+    wrap.appendChild(info)
+    wrapper.appendChild(wrap)
+  }
+  console.log('displayWeather() complete')
+  return wrapper
 }
