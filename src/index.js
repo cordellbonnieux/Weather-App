@@ -94,15 +94,16 @@ form.addEventListener('submit', function(){
   }
 })
 function gatherWeather(data){
-  // it fucks up around here...
-  const name = {info: data.name, title: 'name'}
-  const temp = {info: data.main.temp, title: 'temp'}
-  const feelsLike = {info: data.main['feels_like'], title: 'feels like'}
-  const humidity = {info: data.main.humidity, title: 'humidity'}
-  const pressure = {info: data.main.pressure, title: 'pressure'}
-  const maxTemp = {info: data.main['temp_max'], title: 'max temp'}
-  const minTemp = {info: data.main['temp_min'], title: 'min temp'}
-  const weather = [name, temp, feelsLike, humidity, pressure, maxTemp, minTemp]
+  const name = data.name
+  const temp = data.main.temp
+  const feelsLike = data.main['feels_like']
+  const humidity = data.main.humidity
+  const pressure = data.main.pressure
+  const maxTemp = data.main['temp_max']
+  const minTemp = data.main['temp_min']
+  console.log('check')
+  const weather = [{info: name, title: 'name'}, {info: temp, title: 'temp'}, {info: feelsLike, title: 'feels like'}, {info: humidity, title: 'humidity'}, {info: pressure, title: 'pressure'}, {info: maxTemp, title: 'max temp'}, {info: minTemp, title: 'min temp'}]
+  console.log('check again')
   let theWeather = displayWeather(weather)
   console.log('right before resultsArea()')
   resultsArea(theWeather)
@@ -111,6 +112,7 @@ function gatherWeather(data){
 function displayWeather(weather){
   const wrapper = document.createElement('div')
     wrapper.setAttribute('id', 'weather')
+    console.log('displayWeather() right before the for loop')
   for (let i = 0; i < weather.length; i++){
     let title = weather[i].title
     let data = weather[i].info
@@ -122,10 +124,11 @@ function displayWeather(weather){
     let info = document.createElement('span')
       info.textContent = data
       info.setAttribute('class', 'info')
-    wrap.appendChild(title)
+    wrap.appendChild(heading)
     wrap.appendChild(info)
     wrapper.appendChild(wrap)
+    console.log('here is an iteration')
   }
-  console.log('displayWeather() complete')
+  console.log('displayWeather() inside complete')
   return wrapper
 }
