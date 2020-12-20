@@ -1,8 +1,9 @@
 import _ from "lodash" // do i really need it?
 import "./style.css"
+import {createHeader, createForm, resultsArea, createFooter} from './build'
 
 // global variables
-const main = document.querySelector("main")
+const main = document.getElementById("main")
 const form = document.createElement('form')
 const results = document.getElementById('results')
 
@@ -18,56 +19,9 @@ function errorText(){
   return p
 }
 
-// building blocks 
-function createHeader(){
-  const wrapper = document.createElement('div')
-    wrapper.setAttribute('id', 'headerWrapper')
-    main.appendChild(wrapper)
-  const title = document.createElement('h1')
-    title.textContent = 'Get The Weather!'
-    wrapper.appendChild(title)
-}
-function createForm(){
-  const wrapper = document.createElement('div')
-    wrapper.setAttribute('id', 'formWrapper')
-    main.appendChild(wrapper)
-    form.setAttribute('name', 'form')
-    form.setAttribute('onsubmit', 'return false')
-    wrapper.appendChild(form)
-  const search = document.createElement('input')
-    search.setAttribute('type', 'text')
-    search.setAttribute('name', 'textField')
-    search.setAttribute('id', 'textField')
-    form.appendChild(search)
-  const button = document.createElement('button')
-    button.setAttribute('type', 'submit')
-    button.textContent = 'search'
-    form.appendChild(button)
-}
-function resultsArea(info){
-  results.innerHTML = ''
-  const wrapper = document.createElement('div')
-  results.appendChild(wrapper)
-  wrapper.appendChild(info)
-}
-function createFooter(){
-  const footer = document.querySelector('footer')
-  const text = document.createElement('p')
-  const link = document.createElement('a')
-    link.textContent = 'Cordell Bonnieux'
-    link.setAttribute('href', 'https://cordellbonnieux.com')
-    link.setAttribute('target', '_blank')
-    link.style.display = 'inline'
-    text.style.display = 'inline'
-    text.innerHTML = `This app was created by `
-    footer.appendChild(text)
-    footer.appendChild(link)
-
-}
-
 // build the page
 createHeader()
-createForm()
+createForm(main, form)
 resultsArea(defaultText())
 createFooter()
 
@@ -82,7 +36,7 @@ async function getWeather(query){
   } catch (error) {
     console.error(error)
     const err = errorText()
-    resultsArea(err) // try
+    resultsArea(err)
   }
 }
 form.addEventListener('submit', function(){
@@ -101,25 +55,20 @@ function gatherWeather(data){
   const pressure = data.main.pressure
   const maxTemp = data.main['temp_max']
   const minTemp = data.main['temp_min']
-  console.log('check')
   const weather = [{info: name, title: 'name'}, {info: temp, title: 'temp'}, {info: feelsLike, title: 'feels like'}, {info: humidity, title: 'humidity'}, {info: pressure, title: 'pressure'}, {info: maxTemp, title: 'max temp'}, {info: minTemp, title: 'min temp'}]
-  console.log('check again')
   let theWeather = displayWeather(weather)
-  console.log('right before resultsArea()')
   resultsArea(theWeather)
-  console.log('gatherWeather() complete')
 }
 function displayWeather(weather){
   const wrapper = document.createElement('div')
     wrapper.setAttribute('id', 'weather')
-    console.log('displayWeather() right before the for loop')
   for (let i = 0; i < weather.length; i++){
     let title = weather[i].title
     let data = weather[i].info
     let wrap = document.createElement('div')
       wrap.setAttribute('id', title)
     let heading = document.createElement('span')
-      heading.textContent = title
+      heading.textContent = title + ': '
       heading.setAttribute('class', 'title')
     let info = document.createElement('span')
       info.textContent = data
@@ -127,8 +76,6 @@ function displayWeather(weather){
     wrap.appendChild(heading)
     wrap.appendChild(info)
     wrapper.appendChild(wrap)
-    console.log('here is an iteration')
   }
-  console.log('displayWeather() inside complete')
   return wrapper
 }
