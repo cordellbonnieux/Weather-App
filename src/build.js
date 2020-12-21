@@ -1,19 +1,13 @@
 // building blocks 
 export function createHeader(){
-    console.log('createHeader start')
-
     const wrapper = document.createElement('div')
       wrapper.setAttribute('id', 'headerWrapper')
       main.appendChild(wrapper)
     const title = document.createElement('h1')
         title.textContent = 'Get The Weather!'
         wrapper.appendChild(title)
-
-        console.log('createHeader end')
 }
 export function createForm(main, form){
-    console.log('createForm start')
-
     const wrapper = document.createElement('div')
       wrapper.setAttribute('id', 'formWrapper')
       form.setAttribute('name', 'form')
@@ -29,22 +23,14 @@ export function createForm(main, form){
       button.textContent = 'search'
       form.appendChild(button)
     main.appendChild(wrapper)
-
-    console.log('createForm end')
 }
 export function resultsArea(info){
-    console.log('resultsArea start')
-
     results.innerHTML = ''
     const wrapper = document.createElement('div')
     results.appendChild(wrapper)
     wrapper.appendChild(info)
-
-    console.log('resultsArea end')    
 }
 export function createFooter(){
-    console.log('createFooter start')
-
     const footer = document.querySelector('footer')
     const text = document.createElement('p')
     const link = document.createElement('a')
@@ -56,6 +42,4 @@ export function createFooter(){
       text.innerHTML = `This app was created by `
       footer.appendChild(text)
       footer.appendChild(link)
-
-      console.log('createFooter end ru')
 }

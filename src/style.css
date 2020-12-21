@@ -1,25 +1,44 @@
+html, body{
+    height:100%;
+    overflow-x:hidden;
+}
 body {
     background: rgb(238,246,33);
     background: linear-gradient(149deg, rgba(238,246,33,1) 6%, rgba(204,197,39,1) 44%, rgba(214,105,36,1) 69%, rgba(205,41,41,1) 91%);
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 900px;
+    position:relative;
+    margin:0;
 }
-main{
-    display:flex;
+#mainWrapper{
+    max-width:300px;
+    margin:0 auto;
 }
-main, #results, footer{
+#main, #results{
     background-color:rgba(255, 255, 255, 0.5);
     color:#000000;
     padding:10px;
-    margin:10px auto;
-    border-radius:10px;
-    width:80%;
-    max-width:850px;
+    margin:15px auto;
+    border-radius:2px;
+    width:280px;
+    display:block;
 }
-    #formWrapper form{
-        padding: 30px 30px 0px 30px;
+@media only screen and (min-width: 768px) {
+    #mainWrapper{
+        min-width: 700px;
+        margin:30px auto;
     }
-    main div{
-        width:50%;
+    #main, #results{
+        vertical-align: top;
+        margin:10px;
+        display:inline-block;
     }
+}
+#formWrapper form{
+    padding: 30px 30px 0px 30px;
+}
+footer{
+    position: absolute;
+    right: 10px;
+    bottom: 20px;
+}

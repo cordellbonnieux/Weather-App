@@ -1,5 +1,5 @@
 import _ from "lodash" // do i really need it?
-import "./style.css"
+
 import {createHeader, createForm, resultsArea, createFooter} from './build'
 
 // global variables
@@ -79,3 +79,5 @@ function displayWeather(weather){
   }
   return wrapper
 }
+
+import "./style.css"
