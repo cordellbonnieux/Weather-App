@@ -26,13 +26,17 @@ export function formTrigger(){
   }
   export function gatherWeather(data){
     const name = data.name
-    const temp = data.main.temp
-    const feelsLike = data.main['feels_like']
+    const country = data.sys.country
+    const temp = (data.main.temp - 273).toFixed(1)
+    const feelsLike = (data.main['feels_like'] - 273).toFixed(1)
     const humidity = data.main.humidity
     const pressure = data.main.pressure
-    const maxTemp = data.main['temp_max']
-    const minTemp = data.main['temp_min']
-    const weather = [{info: name, title: 'name'}, {info: temp, title: 'temp'}, {info: feelsLike, title: 'feels like'}, {info: humidity, title: 'humidity'}, {info: pressure, title: 'pressure'}, {info: maxTemp, title: 'max temp'}, {info: minTemp, title: 'min temp'}]
+    const maxTemp = (data.main['temp_max'] - 273).toFixed(1)
+    const minTemp = (data.main['temp_min'] - 273).toFixed(1)
+    const mainDescription = data.weather[0].main
+    const description = data.weather[0].description
+    const icon = data.weather[0].icon
+    const weather = [{info: name, title: 'name'}, {info: country, title: 'country'}, {info: temp, title: 'temp'}, {info: feelsLike, title: 'feels like'}, {info: humidity, title: 'humidity'}, {info: pressure, title: 'pressure'}, {info: maxTemp, title: 'max temp'}, {info: minTemp, title: 'min temp'}, {info: mainDescription, title: 'main description'}, {info: description, title: 'description'}, {info: icon, title:'icon'}]
     let theWeather = displayWeather(weather)
     resultsArea(theWeather)
   }
