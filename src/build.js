@@ -1,3 +1,5 @@
+import {getWeather, formTrigger, gatherWeather, displayWeather, defaultText, errorText} from './getWeather'
+
 // building blocks 
 export function createHeader(){
     const wrapper = document.createElement('div')
@@ -39,7 +41,7 @@ export function createFooter(){
       link.setAttribute('target', '_blank')
       link.style.display = 'inline'
       text.style.display = 'inline'
-      text.innerHTML = `This app was created by `
+      text.innerHTML = `Built by `
       footer.appendChild(text)
       footer.appendChild(link)
 }
