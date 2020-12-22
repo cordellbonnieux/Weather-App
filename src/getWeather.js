@@ -2,7 +2,7 @@ import {createHeader, createForm, resultsArea, createFooter} from './build'
 
 // weather retrieval
 export async function getWeather(query){
-    const url = 'https://api.openweathermap.org/data/2.5/weather?q=' + query + '&appid=ebea71aaa693706b343e3ef899d424b3'
+    const url = 'https://api.openweathermap.org/data/2.5/weather?q=' + query + '&units=metric&appid=ebea71aaa693706b343e3ef899d424b3'
     try {
       const response = await fetch(url, {mode: 'cors'}) 
       const data = await response.json()
@@ -27,12 +27,12 @@ export function formTrigger(){
   export function gatherWeather(data){
     const name = data.name
     const country = data.sys.country
-    const temp = (data.main.temp - 273).toFixed(1)
-    const feelsLike = (data.main['feels_like'] - 273).toFixed(1)
+    const temp = data.main.temp //(data.main.temp - 273).toFixed(1)
+    const feelsLike = data.main['feels_like'] //(data.main['feels_like'] - 273).toFixed(1)
     const humidity = data.main.humidity
     const pressure = data.main.pressure
-    const maxTemp = (data.main['temp_max'] - 273).toFixed(1)
-    const minTemp = (data.main['temp_min'] - 273).toFixed(1)
+    const maxTemp = data.main['temp_max'] //(data.main['temp_max'] - 273).toFixed(1)
+    const minTemp = data.main['temp_min'] //(data.main['temp_min'] - 273).toFixed(1)
     const mainDescription = data.weather[0].main
     const description = data.weather[0].description
     const icon = data.weather[0].icon
