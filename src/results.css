@@ -1,0 +1,55 @@
+#weather{
+    display:flex; 
+    flex-wrap:wrap;
+}
+#name{
+    font-size:48px;
+    padding:10px;
+}
+    #name .title{
+        display:none;
+    }
+#country{
+    width:24px;
+    font-size:18px;
+    position:relative;
+    padding:4px;
+}
+    #country .title{
+        display:none;
+    }
+    #country .info{
+        position:absolute;
+        bottom: 16px;
+    }
+#temp{
+    padding:10px;
+    font-size:42px;
+}
+    #temp .title{
+
+    }
+    #temp .info{
+
+    }
+#feelslike{
+    padding:10px;
+}
+#humidity{
+    padding:10px;
+}
+#pressure{
+    padding:10px;
+}
+#maxtemp{
+    padding:10px;
+}
+#mintemp{
+    padding:10px;
+}
+#maindescription{
+    padding:10px;
+}
+#description{
+    padding:10px;
+}

@@ -29,8 +29,10 @@ body {
         margin:30px auto;
     }
     #main, #results{
-        vertical-align: top;
         margin:10px;
+        width:auto;
+    }
+    #headerWrapper, #formWrapper{
         display:inline-block;
     }
 }

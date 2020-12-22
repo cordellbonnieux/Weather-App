@@ -27,12 +27,12 @@ export function formTrigger(){
   export function gatherWeather(data){
     const name = data.name
     const country = data.sys.country
-    const temp = data.main.temp //(data.main.temp - 273).toFixed(1)
-    const feelsLike = data.main['feels_like'] //(data.main['feels_like'] - 273).toFixed(1)
+    const temp = data.main.temp
+    const feelsLike = data.main['feels_like'] 
     const humidity = data.main.humidity
     const pressure = data.main.pressure
-    const maxTemp = data.main['temp_max'] //(data.main['temp_max'] - 273).toFixed(1)
-    const minTemp = data.main['temp_min'] //(data.main['temp_min'] - 273).toFixed(1)
+    const maxTemp = data.main['temp_max']
+    const minTemp = data.main['temp_min']
     const mainDescription = data.weather[0].main
     const description = data.weather[0].description
     const icon = data.weather[0].icon
@@ -47,21 +47,27 @@ export function displayWeather(weather){
       let title = weather[i].title
       let data = weather[i].info
       let wrap = document.createElement('div')
-        wrap.setAttribute('id', title)
       let heading = document.createElement('span')
-        heading.textContent = title + ': '
-        heading.setAttribute('class', 'title')
       let info = document.createElement('span')
+        wrap.setAttribute('id', title.replace(/\s/g, ''))
+        heading.setAttribute('class', 'title')
         info.textContent = data
         info.setAttribute('class', 'info')
-      wrap.appendChild(heading)
-      wrap.appendChild(info)
+      if (title == 'temp'){
+        heading.textContent = '°C'
+        wrap.appendChild(info)
+        wrap.appendChild(heading)
+      } else {
+        heading.textContent = title
+        wrap.appendChild(heading)
+        wrap.appendChild(info)
+      }
       wrapper.appendChild(wrap)
     }
     return wrapper
 }
 
-  // info text
+// info text
 export function defaultText(){
     const p = document.createElement('p')
     p.textContent = 'enter a city in the search above to get the weather.'
@@ -72,3 +78,5 @@ export function errorText(){
    p.textContent = 'Hmm... Looks like there was an error with your search. Try again!'
    return p
 }
+
+import './results.css'
