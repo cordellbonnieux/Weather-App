@@ -1,6 +1,17 @@
 import {createHeader, createForm, resultsArea, createFooter} from './build'
+import {getImage} from './getImage'
 
 // weather retrieval
+export function formTrigger(){
+  form.addEventListener('submit', function(){
+    if (document.form.textField.value == ''){
+      return false
+    } else {
+      const query = document.getElementById('textField').value
+      getWeather(query)
+    }
+  })
+}
 export async function getWeather(query){
     const url = 'https://api.openweathermap.org/data/2.5/weather?q=' + query + '&units=metric&appid=ebea71aaa693706b343e3ef899d424b3'
     try {
@@ -13,16 +24,6 @@ export async function getWeather(query){
       const err = errorText()
       resultsArea(err)
     }
-  }
-export function formTrigger(){
-    form.addEventListener('submit', function(){
-      if (document.form.textField.value == ''){
-        return false
-      } else {
-        const query = document.getElementById('textField').value
-        getWeather(query)
-      }
-    })
   }
   export function gatherWeather(data){
     const name = data.name
@@ -39,6 +40,7 @@ export function formTrigger(){
     const weather = [{info: name, title: 'name'}, {info: country, title: 'country'}, {info: temp, title: 'temp'}, {info: feelsLike, title: 'feels like'}, {info: humidity, title: 'humidity'}, {info: pressure, title: 'pressure'}, {info: maxTemp, title: 'max temp'}, {info: minTemp, title: 'min temp'}, {info: mainDescription, title: 'main description'}, {info: description, title: 'description'}, {info: icon, title:'icon'}]
     let theWeather = displayWeather(weather)
     resultsArea(theWeather)
+    getImage(name, country, mainDescription) // link to getImage.js
   }
 export function displayWeather(weather){
     const wrapper = document.createElement('div')

@@ -1,5 +1,6 @@
 import {createHeader, createForm, resultsArea, createFooter} from './build'
 import {getWeather, formTrigger, gatherWeather, displayWeather, defaultText, errorText} from './getWeather'
+import {getImage} from './getImage'
 
 // global variables
 const main = document.getElementById("main")
