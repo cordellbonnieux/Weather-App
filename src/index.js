@@ -1,6 +1,6 @@
 import {createHeader, createForm, resultsArea, createFooter} from './build'
 import {getWeather, formTrigger, gatherWeather, displayWeather, defaultText, errorText} from './getWeather'
-import {getImage} from './getImage'
+import {getImage, startImage} from './getImage'
 
 // global variables
 const main = document.getElementById("main")
@@ -15,5 +15,8 @@ createFooter()
 
 // link up the API
 formTrigger()
+
+// get the starting background
+console.log(startImage())
 
 import "./style.css"

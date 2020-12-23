@@ -2,12 +2,12 @@ import {getWeather, formTrigger, gatherWeather, displayWeather, defaultText, err
 
 // building blocks 
 export function createHeader(){
-    const wrapper = document.createElement('div')
-      wrapper.setAttribute('id', 'headerWrapper')
-      main.appendChild(wrapper)
-    const title = document.createElement('h1')
-        title.textContent = 'Get The Weather!'
-        wrapper.appendChild(title)
+  const wrapper = document.createElement('div')
+    wrapper.setAttribute('id', 'headerWrapper')
+    main.appendChild(wrapper)
+  const title = document.createElement('h1')
+    title.textContent = 'Get The Weather!'
+    wrapper.appendChild(title)
 }
 export function createForm(main, form){
     const wrapper = document.createElement('div')

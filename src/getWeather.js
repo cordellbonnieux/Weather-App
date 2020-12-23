@@ -1,5 +1,5 @@
 import {createHeader, createForm, resultsArea, createFooter} from './build'
-import {getImage} from './getImage'
+import {getImage, startImage} from './getImage'
 
 // weather retrieval
 export function formTrigger(){
@@ -17,7 +17,6 @@ export async function getWeather(query){
     try {
       const response = await fetch(url, {mode: 'cors'}) 
       const data = await response.json()
-      console.log(data)
       gatherWeather(data)
     } catch (error) {
       console.error(error)
@@ -40,7 +39,7 @@ export async function getWeather(query){
     const weather = [{info: name, title: 'name'}, {info: country, title: 'country'}, {info: temp, title: 'temp'}, {info: feelsLike, title: 'feels like'}, {info: humidity, title: 'humidity'}, {info: pressure, title: 'pressure'}, {info: maxTemp, title: 'max temp'}, {info: minTemp, title: 'min temp'}, {info: mainDescription, title: 'main description'}, {info: description, title: 'description'}, {info: icon, title:'icon'}]
     let theWeather = displayWeather(weather)
     resultsArea(theWeather)
-    getImage(name, country, mainDescription) // link to getImage.js
+    getImage(name, country, mainDescription)
   }
 export function displayWeather(weather){
     const wrapper = document.createElement('div')
