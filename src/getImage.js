@@ -13,14 +13,11 @@ function changeBackground(data){
     const body = document.querySelector('body')
     const image = data.results[0].urls.full
         body.style.backgroundImage = `url(${image})`
-        //body.style.backgroundSize = 'cover'
-        //body.style.backgroundRepeat = 'no-repeat'
-        //body.style.backgroundPosition = 'center'
 }
 export function startImage(){
     const body = document.querySelector('body')
     let date = new Date()
-    let month = date.getMonth() +1
+    let month = date.getMonth() + 1
     if (month == 1){
         body.style.backgroundImage = 'url(../src/months/january.jpg)'
     } else if (month == 2){
