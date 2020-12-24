@@ -9,7 +9,7 @@ export function createHeader(){
     title.textContent = 'Get The Weather!'
     wrapper.appendChild(title)
 }
-export function createForm(main, form, data){
+export function createForm(main, form, picker){
   const wrapper = document.createElement('div')
     wrapper.setAttribute('id', 'formWrapper')
     form.setAttribute('name', 'form')
@@ -20,19 +20,9 @@ export function createForm(main, form, data){
     search.setAttribute('name', 'textField')
     search.setAttribute('id', 'textField')
     form.appendChild(search)
-  const countryPicker = document.createElement('select')
-    countryPicker.setAttribute('id', 'countryPicker')
-    countryPicker.setAttribute('name', 'country')
-    // need to fix this here
-    for (let i = 0; i < data.length; i++){
-      let country = document.createElement('option')
-        //country.value = data[i].Alpha2Code
-        country.textContent = data[i].Name
-        countryPicker.setAttribute('value', data[i].Alpha2Code)
-        countryPicker.setAttribute('option', country[i])
-    }
-    console.log(typeof data)
-    form.appendChild(countryPicker)
+  //
+  //  form.appendChild(picker)
+  //
   const button = document.createElement('button')
     button.setAttribute('type', 'submit')
     button.textContent = 'search'
