@@ -1,4 +1,5 @@
 import {getWeather, formTrigger, gatherWeather, displayWeather, defaultText, errorText} from './getWeather'
+import {countriesList} from './countries'
 
 // building blocks 
 export function createHeader(){
@@ -20,7 +21,7 @@ export function createForm(main, form, picker){
     search.setAttribute('name', 'textField')
     search.setAttribute('id', 'textField')
     form.appendChild(search)
-    //form.appendChild(picker)
+    form.appendChild(picker)
   const button = document.createElement('button')
     button.setAttribute('type', 'submit')
     button.textContent = 'search'
@@ -46,34 +47,15 @@ export function createFooter(){
       footer.appendChild(text)
       footer.appendChild(link)
 }
-export async function getCountries(){
-  try{
-      const response = await fetch('http://countryapi.gear.host/v1/Country/getCountries', {mode: 'no-cors'})
-      const data = await response.json()
-      console.log(data.Response)
-      const dataObject = data.Reponse
-      console.log(dataObject)
-      console.log('about to exit getCountries()')
-  } catch(error){
-      console.error(error)
-  }
-}
-//
-getCountries()
-//
-export function countryPicker(){
-  const countryList = getCountries()
-  console.log('returned data' + ' ' + countryList)
-
-  
+export function countryPicker(countryList){
   const picker = document.createElement('select')
       picker.setAttribute('id', 'countryPicker')
       picker.setAttribute('name', 'country')
       picker.textContent = 'country'
   for (let i = 0; i < countryList.length; i++){
       let option = document.createElement('option')
-          option.setAttribute('value', countryList[i].Alpha2Code)
-          option.textContent = countryList[i].Name
+          option.setAttribute('value', countryList[i].code)
+          option.textContent = countryList[i].name
       picker.appendChild(option)
   }
   return picker

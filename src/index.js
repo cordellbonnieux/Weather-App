@@ -1,18 +1,17 @@
-import {createHeader, createForm, resultsArea, createFooter, getCountries, countryPicker} from './build'
+import {createHeader, createForm, resultsArea, createFooter, countryPicker} from './build'
 import {getWeather, formTrigger, gatherWeather, displayWeather, defaultText, errorText} from './getWeather'
 import {getImage, startImage} from './getImage'
-
+import {countriesList} from './countries'
 
 // global variables
 const main = document.getElementById("main")
 const form = document.createElement('form')
 const results = document.getElementById('results')
-//const picker = countryPicker()
 
 
 // build the page
 createHeader()
-createForm(main, form)
+createForm(main, form, countryPicker(countriesList))
 resultsArea(defaultText())
 createFooter()
 
@@ -23,6 +22,3 @@ formTrigger()
 startImage()
 
 import "./style.css"
-
-
-
