@@ -37,8 +37,7 @@ export async function getWeather(query){
     const minTemp = data.main['temp_min']
     const mainDescription = data.weather[0].main
     const description = data.weather[0].description
-    const icon = data.weather[0].icon
-    const weather = [{info: name, title: 'name'}, {info: country, title: 'country'}, {info: temp, title: 'temp'}, {info: feelsLike, title: 'feels like'}, {info: humidity, title: 'humidity'}, {info: pressure, title: 'pressure'}, {info: maxTemp, title: 'max temp'}, {info: minTemp, title: 'min temp'}, {info: mainDescription, title: 'main description'}, {info: description, title: 'description'}, {info: icon, title:'icon'}]
+    const weather = [{info: name, title: 'name'}, {info: country, title: 'country'}, {info: temp, title: 'temp'}, {info: feelsLike, title: 'feels like'}, {info: humidity, title: 'humidity'}, {info: pressure, title: 'pressure'}, {info: maxTemp, title: 'max temp'}, {info: minTemp, title: 'min temp'}, {info: mainDescription, title: 'main description'}, {info: description, title: 'description'}]
     let theWeather = displayWeather(weather)
     resultsArea(theWeather)
     getImage(name, country, mainDescription)
@@ -46,6 +45,13 @@ export async function getWeather(query){
 export function displayWeather(weather){
     const wrapper = document.createElement('div')
       wrapper.setAttribute('id', 'weather')
+    const whereWrapper = document.createElement('div')
+      whereWrapper.setAttribute('id', 'where')
+    const tempWrapper = document.createElement('div')
+      tempWrapper.setAttribute('id', 'temperature')
+    const descriptionWrapper = document.createElement('div')
+      descriptionWrapper.setAttribute('id', 'description')
+
     for (let i = 0; i < weather.length; i++){
       let title = weather[i].title
       let data = weather[i].info
@@ -63,10 +69,21 @@ export function displayWeather(weather){
       } else {
         heading.textContent = title
         wrap.appendChild(heading)
-        wrap.appendChild(info)
+        wrap.appendChild(info) 
       }
-      wrapper.appendChild(wrap)
+      if (title == 'name' || title == 'country'){
+        whereWrapper.appendChild(wrap)
+      } else if (title == 'temp' || title == 'feels like' || title == 'max temp' || title == 'min temp'){
+        tempWrapper.appendChild(wrap)
+      } else if (title == 'main description' || title == 'description' || title == 'humidity' || title == 'pressure'){
+        descriptionWrapper.appendChild(wrap)
+      } else {
+        console.log(title + " didn't make it!")
+      }
     }
+    wrapper.appendChild(whereWrapper)
+    wrapper.appendChild(tempWrapper)
+    wrapper.appendChild(descriptionWrapper)
     return wrapper
 }
 

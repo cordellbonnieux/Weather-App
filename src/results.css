@@ -2,9 +2,14 @@
     display:flex; 
     flex-wrap:wrap;
 }
+#weather div{
+    padding:10px;
+    margin:10px;
+    background-color:rgba(59, 59, 59, 0.9);
+    color:#EBEBEB;
+}
 #name{
     font-size:48px;
-    padding:10px;
 }
     #name .title{
         display:none;
@@ -23,7 +28,6 @@
         bottom: 16px;
     }
 #temp{
-    padding:10px;
     font-size:42px;
 }
     #temp .title{
@@ -33,23 +37,23 @@
 
     }
 #feelslike{
-    padding:10px;
+
 }
 #humidity{
-    padding:10px;
+
 }
 #pressure{
-    padding:10px;
+
 }
 #maxtemp{
-    padding:10px;
+
 }
 #mintemp{
-    padding:10px;
+
 }
 #maindescription{
-    padding:10px;
+
 }
 #description{
-    padding:10px;
+    
 }
