@@ -72,6 +72,7 @@ export function displayWeather(weather){
         wrap.appendChild(info) 
       }
       if (title == 'name' || title == 'country'){
+        heading.style.display = 'none'
         whereWrapper.appendChild(wrap)
       } else if (title == 'temp' || title == 'feels like' || title == 'max temp' || title == 'min temp'){
         tempWrapper.appendChild(wrap)

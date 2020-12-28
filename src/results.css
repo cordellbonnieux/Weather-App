@@ -3,29 +3,19 @@
     flex-wrap:wrap;
 }
 #weather div{
-    padding:10px;
-    margin:10px;
-    background-color:rgba(59, 59, 59, 0.9);
+    padding:4px;
+    margin:4px;
+    background-color:rgba(59, 59, 59, 0.8);
     color:#EBEBEB;
 }
-#name{
-    font-size:48px;
+#where{
+    display:flex
 }
-    #name .title{
-        display:none;
+    #name{
+        font-size:36px;
     }
-#country{
-    width:24px;
-    font-size:18px;
-    position:relative;
-    padding:4px;
-}
-    #country .title{
-        display:none;
-    }
-    #country .info{
-        position:absolute;
-        bottom: 16px;
+    #country{
+        font-size:18px;
     }
 #temp{
     font-size:42px;

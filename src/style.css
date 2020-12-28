@@ -1,10 +1,28 @@
+/* pacifico-regular - latin */
+@font-face {
+    font-family: 'Pacifico';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+         url('./fonts/pacifico-v17-latin-regular.woff2') format('woff2'),
+         url('./fonts/pacifico-v17-latin-regular.woff') format('woff')
+  }
+/* montserrat-regular - latin */
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+         url('./fonts/montserrat-v15-latin-regular.woff2') format('woff2'),
+         url('./fonts/montserrat-v15-latin-regular.woff') format('woff')
+  }
 html, body{
     height:100%;
     overflow-x:hidden;
+    font-family: 'Montserrat';
 }
 body {
-    background: rgb(238,246,33);
-    background: linear-gradient(149deg, rgba(238,246,33,1) 6%, rgba(204,197,39,1) 44%, rgba(214,105,36,1) 69%, rgba(205,41,41,1) 91%);
+    background:#EBEBEB;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -12,22 +30,39 @@ body {
     margin:0;
 }
 header{
-    background-color:#3B3B3B;
+    background-color:#4386E6;
 }
 #main{
-    max-width: 1200px;
-    width:300px;
+    max-width: 1400px;
     margin: 0 auto;
     text-align: center;
+    padding:4px;
     color:#EBEBEB;
 }
 #headerWrapper, #formWrapper{
-    width:50%;
-    display:inline-block;
+
 }
+    #headerWrapper h1{
+        font-family: 'Pacifico';
+        font-size: 1.8em;
+    }
 #formWrapper form{
-    padding: 30px 30px 0px 30px;
+    display:flex;
+    margin: 0 auto 10px auto;
+    max-width:400px;
 }
+    #textField{
+        margin:0 1%;
+        width:41%;
+    }
+    #countryPicker{
+        margin:0 1%;
+        width:36%;
+    }
+    #formWrapper form button{
+        margin:0 1%;
+        width:17%;
+    }
 #mainWrapper{
     max-width:300px;
     margin:0 auto;
@@ -42,6 +77,10 @@ header{
     display:block;
 }
 @media only screen and (min-width: 768px) {
+    #headerWrapper, #formWrapper{
+        width:50%;
+        display:inline-block;
+    }
     #mainWrapper{
         min-width: 700px;
         margin:30px auto;
