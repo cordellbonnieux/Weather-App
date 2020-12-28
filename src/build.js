@@ -51,7 +51,10 @@ export function countryPicker(countryList){
   const picker = document.createElement('select')
       picker.setAttribute('id', 'countryPicker')
       picker.setAttribute('name', 'country')
-      picker.textContent = 'country'
+  const defaultOption = document.createElement('option')
+      defaultOption.textContent = 'country'
+      defaultOption.setAttribute('value', null)
+      picker.appendChild(defaultOption)
   for (let i = 0; i < countryList.length; i++){
       let option = document.createElement('option')
           option.setAttribute('value', countryList[i].code)

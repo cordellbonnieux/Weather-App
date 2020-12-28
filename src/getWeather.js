@@ -3,11 +3,13 @@ import {getImage, startImage} from './getImage'
 
 // weather retrieval
 export function formTrigger(){
-  form.addEventListener('submit', function(){
-    if (document.form.textField.value == ''){
+  const countrySelect = document.getElementById('countryPicker')
+    form.addEventListener('submit', function(){
+    if (document.form.textField.value == '' || countrySelect.value === null){
+      resultsArea(invalidText())
       return false
     } else {
-      const query = document.getElementById('textField').value
+      const query = (document.getElementById('textField').value + ',' + countrySelect.value.toLowerCase())
       getWeather(query)
     }
   })
@@ -78,6 +80,11 @@ export function errorText(){
    const p = document.createElement('p')
    p.textContent = 'Hmm... Looks like there was an error with your search. Try again!'
    return p
+}
+function invalidText(){
+  const p = document.createElement('p')
+  p.textContent = 'Please type in a valid city name & choose a country before searching for the weather.'
+  return p
 }
 
 import './results.css'
