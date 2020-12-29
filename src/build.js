@@ -20,6 +20,7 @@ export function createForm(main, form, picker){
     search.setAttribute('type', 'text')
     search.setAttribute('name', 'textField')
     search.setAttribute('id', 'textField')
+    search.textContent = 'city name'
     form.appendChild(search)
     form.appendChild(picker)
   const button = document.createElement('button')

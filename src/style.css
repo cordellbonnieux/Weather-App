@@ -54,21 +54,45 @@ header{
     #textField{
         margin:0 1%;
         width:41%;
+        background-color: #EBEBEB;
+        border: 1px solid #3B3B3B;
+        color: #3B3B3B;
+        border-radius: 2px;
     }
     #countryPicker{
         margin:0 1%;
         width:36%;
+        font-family: 'Montserrat';
+        background-color: #EBEBEB;
+        border: 1px solid #3B3B3B;
+        color: #3B3B3B;
+        border-radius: 2px;
     }
+        #countryPicker option{
+            width:inherit;
+            font-size:0.8em;
+            background-color: #EBEBEB;
+            color: #3B3B3B;
+        }
     #formWrapper form button{
         margin:0 1%;
         width:17%;
+        text-align:center;
+        color: #3B3B3B;
+        background-color: #EBEBEB;
+        box-shadow: 1px 1px #3B3B3B;
+        border:none;
+        border-radius: 2px;
     }
+        #formWrapper form button:active{
+            box-shadow: 1px 1px #EBEBEB;
+        }
 #mainWrapper{
     max-width:300px;
     margin:0 auto;
 }
 #results{
-    background-color:rgba(235, 235, 235, 0.9);
+    /*background-color:rgba(235, 235, 235, 0.9);*/
     color:#3B3B3B;
     padding:10px;
     margin:15px auto;

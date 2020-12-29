@@ -5,8 +5,8 @@
 #weather div{
     padding:4px;
     margin:4px;
-    background-color:rgba(59, 59, 59, 0.8);
-    color:#EBEBEB;
+    /*background-color:rgba(59, 59, 59, 0.8);
+    color:#EBEBEB;*/
 }
 #where{
     display:flex
