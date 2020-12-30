@@ -7,7 +7,7 @@ export function createHeader(){
     wrapper.setAttribute('id', 'headerWrapper')
     main.appendChild(wrapper)
   const title = document.createElement('h1')
-    title.textContent = 'Get The Weather!'
+    title.textContent = 'Get The Weather'
     wrapper.appendChild(title)
 }
 export function createForm(main, form, picker){
