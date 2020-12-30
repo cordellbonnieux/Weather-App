@@ -132,19 +132,19 @@ function reDoFooter(){
 export function defaultText(){
     const p = document.createElement('p')
     p.textContent = 'enter a city in the search above to get the weather.'
-    p.style.cssText = 'background: rgba(235, 235, 235, 0.6); border-radius:2px; text-align:center; padding:10px;'
+    p.style.cssText = 'background: rgba(235, 235, 235, 0.8); border-radius:2px; text-align:center; padding:10px;'
     return p
   }
 export function errorText(){
    const p = document.createElement('p')
    p.textContent = 'Hmm... Looks like there was an error with your search. Try again!'
-   p.style.cssText = 'background: rgba(235, 235, 235, 0.6); border-radius:2px; text-align:center; padding:10px;'
+   p.style.cssText = 'background: rgba(235, 235, 235, 0.8); border-radius:2px; text-align:center; padding:10px;'
    return p
 }
 function invalidText(){
   const p = document.createElement('p')
   p.textContent = 'Please input a valid city name & country before searching for the weather.'
-  p.style.cssText = 'background: rgba(235, 235, 235, 0.6); border-radius:2px; text-align:center; padding:10px;'
+  p.style.cssText = 'background: rgba(235, 235, 235, 0.8); border-radius:2px; text-align:center; padding:10px;'
   return p
 }
 

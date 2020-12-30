@@ -8,7 +8,7 @@
     max-width:100%;
 }
 #where, #temperature, #moreInfo{
-    background: rgba(235, 235, 235, 0.6);
+    background: rgba(235, 235, 235, 0.8);
     border-radius: 2px;
 }
 #where{
@@ -64,7 +64,7 @@
 /* refresh the footer */
 footer{
     font-size:0.7em;
-    background-color:rgba(235, 235, 235, 0.6);
+    background-color:rgba(235, 235, 235, 0.8);
     color:#3B3B3B;
     padding:5px;
     position: absolute;
